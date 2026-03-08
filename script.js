@@ -164,6 +164,13 @@ function handleCall(call) {
     // Play the remote stream through Web Audio API
     const remoteSource = audioCtx.createMediaStreamSource(remoteStream);
     remoteSource.connect(volumeNode);
+
+    // Ungodly hack to actually get the audio to flow
+    const a = new Audio();
+    a.muted = true;
+    a.srcObject = remoteStream;
+    a.addEventListener('canplaythrough', () => { console.log('ready to flow'); });
+    // End ungodly hack.
   });
 }
 
