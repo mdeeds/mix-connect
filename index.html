@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mix Connect</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/peerjs@1.5.2/dist/peerjs.min.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1>Mix Connect</h1>
+        <button id="start-btn">Start</button>
+
+        <div id="connection-panel" class="hidden">
+            <div class="connection-row">
+                <strong>My ID:</strong> <span id="my-id">Generating...</span>
+            </div>
+            <div class="connection-row">
+                <input type="text" id="remote-id" placeholder="Enter Peer ID to join">
+                <button id="connect-btn">Connect</button>
+            </div>
+            <div id="status"></div>
+        </div>
+
+        <div id="device-list"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
