@@ -28,7 +28,13 @@ startBtn.addEventListener('click', async () => {
 
   // Request permission to access devices and get labels
   try {
-    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+    const stream = await navigator.mediaDevices.getUserMedia({
+      audio: {
+        echoCancellation: false,
+        noiseSuppression: false,
+        autoGainControl: false
+      }
+    });
     stream.getTracks().forEach(track => track.stop()); // Stop immediately
     enumerateDevices();
     startBtn.disabled = true;
@@ -87,7 +93,12 @@ async function toggleDevice(deviceId, isChecked) {
   if (isChecked) {
     try {
       const stream = await navigator.mediaDevices.getUserMedia({
-        audio: { deviceId: { exact: deviceId } }
+        audio: {
+          deviceId: { exact: deviceId },
+          echoCancellation: false,
+          noiseSuppression: false,
+          autoGainControl: false
+        }
       });
 
       const source = audioCtx.createMediaStreamSource(stream);
