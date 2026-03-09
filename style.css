@@ -1,51 +1,92 @@
 body {
-    font-family: sans-serif;
-    padding: 20px;
-    background: #f0f0f0;
-    max-width: 800px;
-    margin: 0 auto;
+  font-family: sans-serif;
+  background: #f0f0f0;
+  margin: 0;
+  display: flex;
+  min-height: 100vh;
+  overflow-x: hidden;
 }
 
 #device-list {
-    margin-top: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .device-strip {
-    background: white;
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    display: flex;
-    align-items: center;
-    gap: 15px;
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 15px;
 }
 
 .device-controls {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    gap: 5px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 5px;
 }
 
 .hidden {
-    display: none;
+  display: none;
 }
 
 #connection-panel {
-    background: white;
-    padding: 15px;
-    border-radius: 8px;
-    margin-top: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+  margin-top: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .connection-row {
-    margin-bottom: 10px;
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    flex-wrap: wrap;
+  margin-bottom: 10px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+#connection-sidebar {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  width: 500px;
+  flex-shrink: 0;
+  background: #f8f9fa;
+  border-right: 1px solid #dee2e6;
+  padding: 20px;
+  box-sizing: border-box;
+  transition: margin-left 0.3s ease;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  overflow-y: auto;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.05);
+}
+
+#connection-sidebar.collapsed {
+  margin-left: -500px;
+}
+
+#sidebar-toggle {
+  margin-bottom: 20px;
+  padding: 10px 15px;
+  border: 1px solid #dee2e6;
+  background: #fff;
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 4px;
+}
+
+#main-content {
+  flex-grow: 1;
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
 }

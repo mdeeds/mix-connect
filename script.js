@@ -293,5 +293,40 @@ function createMasterControls() {
   });
 
   container.append(label, slider, toneBtn, sendToneBtn);
-  document.body.appendChild(container);
+  const sidebar = document.getElementById('connection-sidebar');
+  if (sidebar) sidebar.appendChild(container);
+}
+
+setupSidebarUX();
+
+function setupSidebarUX() {
+  const sidebar = document.createElement('div');
+  sidebar.id = 'connection-sidebar';
+
+  const toggleBtn = document.createElement('button');
+  toggleBtn.id = 'sidebar-toggle';
+  toggleBtn.textContent = '<';
+  toggleBtn.onclick = () => {
+    const collapsed = sidebar.classList.toggle('collapsed');
+    document.body.classList.toggle('sidebar-collapsed', collapsed);
+    toggleBtn.textContent = collapsed ? '>' : '<';
+  };
+
+  const mainContent = document.createElement('div');
+  mainContent.id = 'main-content';
+  mainContent.appendChild(toggleBtn);
+
+  const panel = document.getElementById('connection-panel');
+  // Move startBtn (global const) and panel into sidebar
+  if (startBtn) sidebar.appendChild(startBtn);
+  if (panel) sidebar.appendChild(panel);
+  if (deviceList) sidebar.appendChild(deviceList);
+
+  // Move everything else to mainContent
+  while (document.body.firstChild) {
+    mainContent.appendChild(document.body.firstChild);
+  }
+
+  document.body.insertBefore(sidebar, document.body.firstChild);
+  document.body.appendChild(mainContent);
 }
